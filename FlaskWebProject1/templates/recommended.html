@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <h1>Movie Recomendation System</h1>
+            <hr>
+
+            <form action="/movie" method="POST">
+
+                <div class="Movie_Input">
+                    <label>Please Input Your Movie</label>
+                    <input type="text" class="form-control" id="moviename" name="movie">
+                </div>
+
+                <button type="submit" class="btn btn-primary" onclick="myFunction()">Give Suggestion</button>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+
+<!-- Added  due to ouput results are not good from userpoint of view on 05/07/2020-->
+
+{% for n in wiki_movie %}
+
+<div class='container-fluid post-container'>
+    <div class='row'>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+
+            <img src={{ wiki_movie[n][2] }} alt="Responsive image" />
+
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 px-3">
+
+            <h4 class="card-title">Movie Title: {{ wiki_movie[n][0] }}</h4>
+            <p class="card-text">
+                {{ wiki_movie[n][1] }}
+            </p>            
+        </div>
+
+
+    </div>
+</div>
+ {% endfor %}
+
+    {% endblock %}
+
